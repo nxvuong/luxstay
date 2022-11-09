@@ -1,0 +1,23 @@
+.container {
+    max-width:1300px;
+    padding:  0 15px;
+    margin: 0 auto;
+}
+$darkColor:#555555;
+@mixin position(){
+    position: absolute;
+    content:"";
+}
+@mixin display($style:center){
+    display: flex;
+    align-items: $style;
+}
+@keyframes showMenu {
+    from {
+        opacity: 0;
+    }
+   
+    to {
+        opacity: 0.8;
+    }
+}

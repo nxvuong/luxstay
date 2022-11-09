@@ -54,7 +54,6 @@ lenguage()
         },2000)
           setInterval(function(){
                 isImageLast.style.display = "block";
-                console.log("child");
             dotsFirst.style.backgroundColor = "red"
             },4000)
       
@@ -62,3 +61,65 @@ lenguage()
     }    
     banner()
 //end banner
+//start address
+window.addEventListener("load",function(){
+    const slider = document.querySelector(".address__image");
+    const sliderList = document.querySelector(".address__list");
+    const sliderItem = document.querySelectorAll(".address__item");
+    const next = document.querySelector(".address__next");
+    const prev = document.querySelector(".address__prev");
+    const itemLength = sliderItem.length
+    const imageWidth = sliderItem[0].clientWidth + 15;
+    let positionX = 0;
+    let index = 0;
+    next.addEventListener("click",function(){
+        change(1)
+    })
+    prev.addEventListener("click",function(){
+        change(-1)
+
+    })
+    function change(direction){
+        if (direction === 1){
+            index++;
+            if (index > itemLength -5 ){
+                index = itemLength - 5;
+                return
+            } 
+            if(index == itemLength - 5){
+                next.style = `color:#cccccc`
+            }else {
+                next.style = `color:#111111 `
+                prev.style = `color:#1111111 `
+
+            }
+            console.log(index);
+            positionX = positionX - imageWidth;
+            console.log(positionX);
+            sliderList.style = `transform: translateX(${positionX}px)`
+
+        } else if (direction === -1){
+            index--;
+            if (index < 0 ){
+                index = 0;
+                return
+            }
+            if (index == 0){
+                prev.style = `color:#cccccc `
+
+            }
+             else {
+                next.style = `color:#111111 `
+                prev.style = `color:#1111111 `
+
+            }
+            
+            console.log(index);
+            positionX = positionX + imageWidth;
+            console.log(positionX);
+            sliderList.style = `transform: translateX(${positionX}px)`
+            console.log('prev');
+        }
+    }
+})
+//end address

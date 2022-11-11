@@ -93,9 +93,7 @@ window.addEventListener("load",function(){
                 prev.style = `color:#1111111 `
 
             }
-            console.log(index);
             positionX = positionX - imageWidth;
-            console.log(positionX);
             sliderList.style = `transform: translateX(${positionX}px)`
 
         } else if (direction === -1){
@@ -123,3 +121,42 @@ window.addEventListener("load",function(){
     }
 })
 //end address
+//start suggestion
+window.addEventListener("load",function() {
+    const suggestionItem = document.querySelectorAll(".suggestion__item");
+    const suggestionList = document.querySelector(".suggestion__list");
+    const suggestionPrev = document.querySelector(".suggestion__prev");
+    const suggestionNext = document.querySelector(".suggestion__next");
+    const imageItem = suggestionItem[0].clientWidth + 15;
+    console.log(suggestionList);
+    var transformX = 0;
+    let index = 0;
+    suggestionList.addEventListener("mousedown",function(){
+        changeWidth(1)
+    })
+    suggestionList.addEventListener("mousedown",function(){
+        changeWidth(-1)
+    })
+    function changeWidth(direction){
+        if (direction === 1){
+            index++;
+            if ( index > suggestionItem.length - 4){
+                index = suggestionItem.length -4;
+                return
+            };
+            transformX = transformX - imageItem ;
+            suggestionList.style = `transform: translateX(${transformX}px)`;
+        } else if ( direction === -1){
+            index--;
+            if ( index < 0){
+                index = 0;
+                transformX = 0;
+                return
+            }
+            transformX = transformX + imageItem ;
+            suggestionList.style = `transform: translateX(${transformX}px)`;
+            console.log(transformX);
+        }
+    }
+})
+//end suggestion
